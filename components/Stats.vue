@@ -1,5 +1,20 @@
 <template>
   <div class="stats">
+    <div class="top-stats">
+      <strong>
+        Year:
+        <span>{{ pad(gamestate.turn,2) }} / {{ pad(gamestate.turnLimit,2) }}</span>
+      </strong>
+      <hr />
+      <strong>
+        Temperature:
+        <span>{{ pad(gamestate.conditions.temperature,2) }} / {{ pad(gamestate.winConditions.temperature,2) }}</span>  
+      </strong>
+      <strong>
+        Oxygen:
+        <span>{{ pad(gamestate.conditions.oxygen,2) }} / {{ pad(gamestate.winConditions.oxygen,2) }}</span>
+      </strong>
+    </div>
     <vue-good-table
       :columns="columns"
       :rows="statGamestate">
@@ -29,6 +44,13 @@
         }
       }
     },
+    methods: {
+      pad(num, padlen, padchar) {
+        const padChar = typeof padchar !== 'undefined' ? padchar : '0';
+        const pad = new Array(1 + padlen).join(padChar);
+        return (pad + num).slice(-pad.length);
+      }
+    },
     computed: {
       statGamestate() {
         const state = [];
@@ -56,7 +78,7 @@
             type: 'number',
           },
           {
-            label: 'Production',
+            label: 'Produced / Year',
             field: 'production',
             type: 'number',
           }
@@ -72,6 +94,12 @@
   top: 1em;
   left: 1em;
   width: 30vw;
+  background: white;
+  padding: 1em;
+  border: 1px solid black;
+}
+strong {
+  display: flex;
 }
 
 .slide-fade-enter-active {
@@ -86,5 +114,20 @@
 /* .slide-fade-leave-active for <2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+.top-stats {
+  flex-direction: column;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.5;
+  margin-bottom: 1em;
+
+  hr {
+    width: 100%;
+  }
+  strong span {
+    width: 3.5em;
+    text-align: right ;
+  }
 }
 </style>

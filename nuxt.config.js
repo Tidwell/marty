@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'martymars',
+    title: 'M.A.R.T.Y - Mobile Automatic Robot Terraforming Yacht',
     htmlAttrs: {
       lang: 'en'
     },
