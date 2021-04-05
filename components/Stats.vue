@@ -78,12 +78,7 @@ import NumberTransition from 'vue-number-transition';
 </script>
 
 <style lang="scss" scoped>
-$green: rgb(9, 228, 9);
 .stats {
-  position: fixed;
-  top: 1em;
-  left: 1em;
-  background: white;
   padding: 1em;
   border: 1px solid $green;
   background: black;

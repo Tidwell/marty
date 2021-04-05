@@ -149,6 +149,10 @@ export const actions = {
     commit(TYPES.PRODUCE);
     dispatch('runYearlyActions');
     commit('advanceTurnCounter');
+    Vue.notify({
+      text: `New Year`,
+      type: 'info'
+    });
   },
   checkWinCondition({ commit, state }) {
     let winning = true;

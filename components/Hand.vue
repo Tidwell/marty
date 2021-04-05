@@ -20,8 +20,16 @@
       run(card) {
         try {
           this.$store.dispatch('game/runCardMutationOnGamestate', card);
+          this.$notify({
+            text: `Played ${card.name}`,
+            type: 'success'
+          });
         } catch(e) {
-          alert(e.message);
+          this.$notify({
+            title: 'Cannot be played',
+            text: e.message,
+            type: 'warn'
+          });
         }
       }
     }

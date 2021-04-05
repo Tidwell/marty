@@ -4,11 +4,13 @@
   <h2>Mobile Automatic Robot Terraforming Yacht</h2>
   <ul>
     <li class="button lastsave" v-if="lastSaveFile">
-      <nuxt-link :to="`/game/${lastSaveFile}`">Resume Last Played</nuxt-link>
-      <div class="centered">
-        <img :src="require(`~/assets/images/ships/${lastPlayed.shipAsset}`)" />
-        <span>{{ lastPlayed.name }}</span>
-      </div>
+      <nuxt-link :to="`/game/${lastSaveFile}`">
+        Resume Last Played
+        <div class="centered">
+          <img :src="require(`~/assets/images/ships/${lastPlayed.shipAsset}`)" />
+          <span>{{ lastPlayed.name }}</span>
+        </div>
+      </nuxt-link>
     </li>
     <h1>All Saves</h1>
     <li class="button" v-for="file in savefiles" :key="file.id">
@@ -95,5 +97,13 @@ ul {
 }
 .lastsave img {
   max-height: 8vh;
+}
+.lastsave a {
+  flex-direction: column;
+  color: white;
+
+  span {
+    color: $green;
+  }
 }
 </style>

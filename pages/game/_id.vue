@@ -1,7 +1,7 @@
 <template>
   <div class="overworld">
     <div class="button main-menu">
-      <nuxt-link to="/"> &lt; Main Menu</nuxt-link>
+      <nuxt-link to="/"> <font-awesome-icon icon="angle-left" /> Main Menu</nuxt-link>
     </div>
     <div class="ship-container">
       <img class="ship" :src="require(`~/assets/images/ships/${savefile.shipAsset}`)" />
@@ -78,5 +78,8 @@
   left: 1em;
   width: auto;
   height: auto;
+  svg {
+    margin-right: 0.25em;
+  }
 }
 </style>

@@ -38,8 +38,17 @@
       performBoardAction(location) {
         try {
           this.$store.dispatch('game/performBoardAction', location);
+          this.$notify({
+            title: 'Success!',
+            text: `${location.name} acquired`,
+            type: 'success'
+          });
         } catch(e) {
-          alert(e.message);
+          this.$notify({
+            title: 'Cannot be acquired',
+            text: e.message,
+            type: 'warn'
+          });
         }
       }
     }
