@@ -49,7 +49,7 @@
 <style lang="scss" scoped>
   .board {
     padding: 2em;
-    border: 1px solid;
+    border: 10px solid rgb(45, 44, 44);
     width: 90vw;
     height: 80vh;
     position: fixed;
@@ -57,28 +57,37 @@
     left: 5vw;
     display: flex;
     justify-content: flex-end;
+    background: black;
+    background-image: url('~/assets/images/planets/redplanet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 15vw;
   }
   .actual-board {
     width: 50vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0.75em;
+    grid-row-gap: 0.75em;
   }
   .location {
-    background: white;
+    background: rgba(0,0,0,0.5);
     padding: 1em;
-    border: 1px solid black;
+    border: 1px dashed white;
     cursor: not-allowed;
     transition: transform 0.2s linear;
+    color: white;
 
     &:hover:not(.unplayable) {
       transform: scale(1.125);
     }
 
     &.playable:not(.placed) {
-      border: 1px solid green;
+      border: 1px dashed green;
       cursor: pointer;
     }
     &.placed {
+      border: 1px solid green;
       background: rgba(0,255,0,0.5);
       cursor: default;
     }

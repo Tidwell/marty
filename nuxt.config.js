@@ -20,11 +20,13 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/scss/globals.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/vue-good-table.client.js'
+    '~/plugins/vue-good-table.client.js',
+    '~/plugins/vuex-persist.client.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,7 +45,7 @@ export default {
   ],
  
   styleResources: {
-   scss: []
+   scss: ['~/assets/scss/variables.scss']
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

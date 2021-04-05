@@ -53,6 +53,13 @@ export const mutations = {
     state.gamestate.turn += 1;
   },
   useScenario(state, scenario) {
+    state.gamestate.win = false;
+    state.gamestate.lose = false;
+    state.gamestate.turn = 1;
+    state.gamestate.yearlyActions = [];
+    state.gamestate.discard = [];
+    state.gamestate.hand = [];
+    state.gamestate.board = [];
     const gamestate = scenario();
     Object.keys(gamestate).forEach(stateProp => {
       state.gamestate[stateProp] = gamestate[stateProp];

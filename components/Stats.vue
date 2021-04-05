@@ -15,27 +15,24 @@
         <span>{{ pad(gamestate.conditions.oxygen,2) }} / {{ pad(gamestate.winConditions.oxygen,2) }}</span>
       </strong>
     </div>
-    <vue-good-table
-      :columns="columns"
-      :rows="statGamestate">
-      <template slot="table-row" slot-scope="props">
-        <span v-if="props.column.field === 'amount'">
-          <transition name="slide-fade" mode="out-in">
-            <div :key="`${props.row.amount}`">
-              {{ props.row.amount }}
-            </div>
-          </transition>
-        </span>
-        <span v-else>
-          {{props.formattedRow[props.column.field]}}
-        </span>
-      </template>
-    </vue-good-table>
+
+    <div class="resource-bar">
+      <div class="resource-bar-item" v-for="resource in resources" :key="resource">
+        <img :src="require(`~/assets/images/${resource}.png`)" />
+        <span class="amnt" v-number-transition="{ target: gamestate.resources[resource], iteration: 10, speed: 500 }"></span>
+        <span class="production" v-number-transition="{ target: gamestate.production[resource], iteration: 10, speed: 500 }"></span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import NumberTransition from 'vue-number-transition';
+
   export default {
+    directives: {
+      NumberTransition
+    },
     props: {
       gamestate: {
         type: Object,
@@ -52,16 +49,8 @@
       }
     },
     computed: {
-      statGamestate() {
-        const state = [];
-        Object.keys(this.gamestate.resources).forEach(key => {
-          state.push({
-            name: key,
-            amount: this.gamestate.resources[key],
-            production: this.gamestate.production[key]
-          });
-        });
-        return state;
+      resources() {
+        return Object.keys(this.gamestate.resources);
       }
     },
     data() {
@@ -89,14 +78,16 @@
 </script>
 
 <style lang="scss" scoped>
+$green: rgb(9, 228, 9);
 .stats {
   position: fixed;
   top: 1em;
   left: 1em;
-  width: 30vw;
   background: white;
   padding: 1em;
-  border: 1px solid black;
+  border: 1px solid $green;
+  background: black;
+  color: $green;
 }
 strong {
   display: flex;
@@ -124,10 +115,46 @@ strong {
 
   hr {
     width: 100%;
+    border: 1px solid $green;
   }
   strong span {
     width: 3.5em;
     text-align: right ;
+  }
+}
+.resource-bar {
+  display: flex;
+  background: #000;
+}
+.resource-bar-item {
+  border-right: 2px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+
+  img {
+    max-height: 3em;
+    margin: 0.25em 0;
+  }
+
+  .amnt, .production {
+    width: 100%;
+    padding: 0.25em 1em;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  .amnt {
+    font-size: 2rem;
+    background: #ccc;
+    min-width: 6.25rem;
+  }
+  .production {
+    color: white;
+    background: rgb(112, 95, 74);
   }
 }
 </style>
