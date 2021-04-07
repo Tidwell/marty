@@ -29,7 +29,7 @@
   position: relative;
   width: 10vw;
   height: 15vh;
-  border: 1px solid black;
+  border: 1px solid $black;
   border-radius: 0.25em;
   display: flex;
   justify-content: center;
@@ -37,6 +37,7 @@
   user-select: none;
   transition: transform 0.2s;
   cursor: not-allowed;
+  color: $black;
 
   &:hover {
     z-index: 1;

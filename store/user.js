@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import shipAssets from '~/services/assetdata/ships';
+import allCards from '~/services/assetdata/cards';
 
 export function state() {
   return {
@@ -30,7 +31,10 @@ export const actions = {
     const newfile = {
       id: uuidv4(),
       name,
-      shipAsset: shipAssets[Math.floor(Math.random()*shipAssets.length)]
+      shipAsset: shipAssets[Math.floor(Math.random()*shipAssets.length)],
+      blueprints: [],
+      startingDeck: [],
+      unlockedCards: JSON.parse(JSON.stringify(allCards))
     };
     commit('createSaveFile', newfile);
     return newfile;

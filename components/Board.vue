@@ -66,7 +66,7 @@
     left: 5vw;
     display: flex;
     justify-content: flex-end;
-    background: black;
+    background: $black;
     background-image: url('~/assets/images/planets/redplanet.png');
     background-size: cover;
     background-repeat: no-repeat;

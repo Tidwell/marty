@@ -116,7 +116,7 @@ export default {
   height: 100%;
   flex-direction: column;
   border: 4px solid $green;
-  background: black;
+  background: $black;
 
   .button {
     width: auto;

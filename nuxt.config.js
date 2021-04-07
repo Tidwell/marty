@@ -34,7 +34,9 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    '@nuxtjs/composition-api'
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -53,5 +55,29 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      })
+    }
+  },
+
+  sound: {
+    hover: {
+      src: '/assets/sounds/hover.wav',
+      options: {
+        volume: 1
+      }
+    },
+    click: {
+      src: '/assets/sounds/click.wav',
+      options: {
+        volume: 1
+      }
+    }
   }
 }

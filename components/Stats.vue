@@ -81,7 +81,7 @@ import NumberTransition from 'vue-number-transition';
 .stats {
   padding: 1em;
   border: 1px solid $green;
-  background: black;
+  background: $black;
   color: $green;
 }
 strong {
@@ -128,7 +128,7 @@ strong {
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  color: black;
+  color: $black;
 
   img {
     max-height: 3em;
